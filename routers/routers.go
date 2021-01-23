@@ -16,7 +16,16 @@ func InitServer() {
 	//swagger 配置
 	api := r.Group("api")
 	{
+		// token 测试
+		auther :=api.Group("auther")
+		{
+			auther.POST("/login", auth.LoginHandler)
+			auther.GET("/logout",auth.LogoutHandler)
+			auther.GET("/updateToken",auth.InitiativeExpireHandler)
+		}
+
 		v1 := api.Group("v1")
+		// RBAC
 		{
 			// 获取全部  用户  权限  角色
 			v1.GET("/permissions", version1.PermissionsHandler)
@@ -45,12 +54,19 @@ func InitServer() {
 			v1.PUT("/user/:id", version1.UpdateUserHandler)
 			v1.DELETE("/user/:id", version1.DeleteUserHandler)
 		}
-		auther :=api.Group("auther")
-		{
-			auther.POST("/login", auth.LoginHandler)
-			auther.GET("/logout",auth.LogoutHandler)
-			auther.GET("/updateToken",auth.InitiativeExpireHandler)
-		}
+		// 镜像表+应用表  mirror  application
+
+		// 应用接入 + 我的接入 applicetionInsert myInsert
+
+		// 我的设备  myDevice
+
+		// 企业库 + 项目库 + 园区库  enterprise + project + park  库 library
+
+		// 月报报表	 Monthly report
+
+		// 模型类型管理 + 模块 + 模板   model + module + Template
+
+		// 统计报表	statistics report
 	}
 	_ = r.Run(":8090")
 }
