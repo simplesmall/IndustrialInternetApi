@@ -16,5 +16,10 @@ type Application struct {
 	GitUrl string `json:"git_url"`
 	Status string `json:"status"`
 	CreateTime string `json:"create_time"`
-	Mirrors []*Mirror `json:"mirrors"`
+	Mirrors []Mirror `gorm:"many2many:application_mirror" json:"mirrors"`
+}
+
+type ApplicationIdList struct {
+	Application
+	IdList
 }

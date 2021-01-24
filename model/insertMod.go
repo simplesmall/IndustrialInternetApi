@@ -24,5 +24,10 @@ type MyDevice struct {
 	NetType string `json:"net_type"`
 	Type string `json:"type"`
 	CreateTime string `json:"create_time"`
-	MyInserts []*MyInsert `json:"my_inserts"`
+	MyInserts []MyInsert `gorm:"many2many:mydevice_myinsert" json:"my_inserts"`
+}
+
+type MyDeviceIdList struct {
+	MyDevice
+	IdList
 }

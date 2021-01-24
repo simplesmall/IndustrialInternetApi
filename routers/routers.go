@@ -31,6 +31,7 @@ func InitServer() {
 		}
 
 		v1 := api.Group("v1")
+
 		// RBAC
 		{
 			// 获取全部  用户  权限  角色
@@ -60,6 +61,7 @@ func InitServer() {
 			v1.PUT("/user/:id", version1.UpdateUserHandler)
 			v1.DELETE("/user/:id", version1.DeleteUserHandler)
 		}
+
 		// 镜像表+应用表  mirror  application
 		{
 			v1.GET("/mirrors",version1.GetAllMirrorsHandler)
@@ -72,9 +74,10 @@ func InitServer() {
 			v1.DELETE("/mirror/:id",version1.DeleteMirrorHandler)
 
 			v1.POST("/application",version1.CreateApplicationHandler)
-			v1.PUT("/application/:id",version1.UpdateApplicationByIdHandler)
-			v1.DELETE("/application/:id",version1.DeleteApplicationByIdHandler)
+			v1.PUT("/application/:id",version1.UpdateApplicationHandler)
+			v1.DELETE("/application/:id",version1.DeleteApplicationHandler)
 		}
+
 		// 应用接入 + 我的接入  + 我的设备 applicetionInsert myInsert  myDevice
 		{
 			v1.GET("/applicationInserts",version1.GetAllApplicationInsertsHandler)
@@ -96,6 +99,7 @@ func InitServer() {
 			v1.PUT("/myDevice/:id",version1.UpdateMyDeviceHandler)
 			v1.DELETE("/myDevice/:id",version1.DeleteMyDeviceHandler)
 		}
+
 		// 企业库 + 项目库 + 园区库  enterprise + project + park  库 library
 		{
 			v1.GET("/enterpriseLibs",version1.GetAllEnterPrisesHandler)
@@ -117,6 +121,7 @@ func InitServer() {
 			v1.PUT("/parkLib/:id",version1.UpdateParkHandler)
 			v1.DELETE("/parkLib/:id",version1.DeleteParkHandler)
 		}
+
 		// 月报报表 + 统计报表 Monthly report + statistics report
 		{
 			v1.GET("/monthlyReports",version1.GetAllMonthlyReportsHandler)
@@ -154,7 +159,6 @@ func InitServer() {
 			v1.PUT("/template/:id",version1.UpdateTemplateHandler)
 			v1.DELETE("/template/:id",version1.DeleteTemplateHandler)
 		}
-
 	}
 	_ = r.Run(":8090")
 }

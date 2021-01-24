@@ -15,7 +15,7 @@ type Module struct {
 	Status string `json:"status"`
 	Owner string `json:"owner"`
 	CreateTime string `json:"create_time"`
-	Models []*Model `gorm:"many2many:module_model" json:"models"`
+	Models []Model `gorm:"many2many:module_model" json:"models"`
 }
 type Template struct {
 	gorm.Model
@@ -23,5 +23,15 @@ type Template struct {
 	Status string `json:"status"`
 	Owner string `json:"owner"`
 	CreateTime string `json:"create_time"`
-	Modules []*Module `gorm:"many2many:template_module" json:"modules"`
+	Modules []Module `gorm:"many2many:template_module" json:"modules"`
+}
+
+type ModuleIdList struct {
+	Module
+	IdList
+}
+
+type TemplateIdList struct {
+	Template
+	IdList
 }
