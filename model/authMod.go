@@ -6,6 +6,7 @@ import (
 	"errors"
 	jwtgo "github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
+	"strconv"
 	"time"
 )
 
@@ -24,9 +25,9 @@ func Login(username string, password string) (token JwtToken, err error) {
 	var user User
 	var nullData JwtToken
 
-	obj := Mysql.DB.Where("username = ?", username).First(&user)
+	obj := Mysql.DB.Where("account = ?", username).First(&user)
 	if err = obj.Error; err != nil {
-		return
+		return  nullData, errors.New("Not found user")
 	}
 
 	//验证密码
@@ -37,10 +38,15 @@ func Login(username string, password string) (token JwtToken, err error) {
 
 	generateToken := GenerateToken(user)
 
-	//user.Token = generateToken.Token
-	//user.Expire = generateToken.Expire
+	user.Token = generateToken.Token
+	user.ExpireTime = strconv.FormatInt(generateToken.Expire, 10)
+	user.LoginCount += 1
+	// 登录的时候更新
+	//middleware.AuthToken = generateToken.Token
 
-	//Mysql.DB.Save(&user)
+	// 预留更新用户登录IP
+
+	Mysql.DB.Save(&user)
 
 	return generateToken, nil
 }
@@ -67,7 +73,7 @@ func GenerateToken(user User) JwtToken {
 		jwtgo.StandardClaims{
 			NotBefore: int64(time.Now().Unix() - 1000), // 签名生效时间
 			ExpiresAt: int64(time.Now().Unix() + 7200), // 过期时间 两小时
-			Issuer:    "nhy",                           //签名的发行者
+			Issuer:    "IndustrialInternetApi",                           //签名的发行者
 		},
 	}
 

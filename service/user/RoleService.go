@@ -48,7 +48,7 @@ func UpdateRole(c *gin.Context,ID uint) (role model.Role,affe int64) {
 	var permissionIdList = roleIdList.Ids
 	//根据permission ID 取出权限列表
 	var permissions []model.Permission
-	config.DB.Where("id = ?",ID).First(&roleIdList.Role)
+	//config.DB.Where("id = ?",ID).First(&roleIdList.Role)
 
 	config.DB.Model(&model.Permission{}).Where("id in (?)", permissionIdList).Find(&permissions)
 	// 将列表关系数据绑定到新建角色上

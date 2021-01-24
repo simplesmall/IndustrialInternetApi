@@ -4,9 +4,9 @@ import (
 	"IndustrialInternetApi/common/middleware"
 	"IndustrialInternetApi/model"
 	Response "IndustrialInternetApi/model/response"
+	jwt "IndustrialInternetApi/service/jwt"
 	"errors"
 	"github.com/gin-gonic/gin"
-	jwt "IndustrialInternetApi/service/jwt"
 )
 
 // @Summary 用户登录
@@ -20,26 +20,26 @@ import (
 // @Router /auth/login [post]
 func LoginHandler(c *gin.Context) {
 	var loginInput model.LoginInput
-	err := c.ShouldBindJSON(&loginInput)
-	if err != nil {
-		Response.ResponseBody{}.FailRes(errors.New("数据获取失败"))
+	err1 := c.ShouldBindJSON(&loginInput)
+	if err1 != nil {
+		c.JSON(500,Response.ResponseBody{}.FailRes(errors.New("数据获取失败")))
 	}
 
 	//参数校验
 	token, err := model.Login(loginInput.Username, loginInput.Password)
 	if err != nil {
 		if err.Error() == "record not found" {
-			Response.ResponseBody{}.FailRes("该用户不存在")
+			c.JSON(500,Response.ResponseBody{}.FailRes("该用户不存在"))
 			return
 		} else if err.Error() == "invalid password" {
-			Response.ResponseBody{}.FailRes("密码校验不通过")
+			c.JSON(500,Response.ResponseBody{}.FailRes("密码校验不通过"))
 			return
 		} else {
-			Response.ResponseBody{}.FailRes("登录错误")
+			c.JSON(500,Response.ResponseBody{}.FailRes("登录错误"))
 			return
 		}
 	}
-	Response.ResponseBody{}.OKResultWithMsg(token,"登录成功")
+	c.JSON(200,Response.ResponseBody{}.OKResultWithMsg("登录成功",token))
 	return
 }
 
@@ -53,16 +53,17 @@ func LoginHandler(c *gin.Context) {
 // @Success 200 {object} Middlewares.Response
 // @Router /auth/logout [get]
 func LogoutHandler(c *gin.Context) {
-	Response.ResponseBody{}.OKResult("注销成功")
+	c.JSON(200,Response.ResponseBody{}.OKResult("注销成功"))
 }
 
 //更新token
 func InitiativeExpireHandler(c *gin.Context) {
 	j := jwt.NewJWT()
+	middleware.AuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoicm9vdCIsInBhc3N3b3JkIjoiJDJhJDEwJC40bTYvU0VKRmM2c3A5bjQ5MlhJQ2VCMmlBZWkubmJNeVh1ODBocms4TnhYcW9jS0pCbEQyIiwiZXhwIjoxNjExNDczMjY5LCJpc3MiOiJJbmR1c3RyaWFsSW50ZXJuZXRBcGkiLCJuYmYiOjE2MTE0NjUwNjl9.n4nFkUQ2PuSX_in9jVt21ywrd6fLNl-JGhPQCqU5G3I"
 	newToken, err := j.RefreshToken(middleware.AuthToken)
 	if err != nil {
-		Response.ResponseBody{}.FailRes("token更新失败")
+		c.JSON(500,Response.ResponseBody{}.FailRes("token更新失败"))
 		return
 	}
-	Response.ResponseBody{}.OKResultWithMsg(newToken,"更新成功")
+	c.JSON(200,Response.ResponseBody{}.OKResultWithMsg("更新成功",newToken))
 }

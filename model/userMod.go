@@ -75,6 +75,8 @@ type User struct {
 	LoginCount	uint `json:"login_count" form:"login_count"`							//登录次数
 	UsingTime	string `json:"using_time" form:"using_time"`							//使用时长
 	IP string `json:"ip" form:"ip"`														//用户IP
+	Token string `gorm:"size:500;column:token" json:"token" form:"token"`				//用户Token
+	Type  string `gorm:"size:10;column:type" json:"type" form:"type"`					//用户类型
 	Role     []Role `gorm:"many2many:user_role"`
 }
 

@@ -49,7 +49,7 @@ func (res ResponseBody) FailResWithMsgCode(code int, msg string, err interface{}
 //带data 正常响应体
 func (res ResponseBody) OKResult(data interface{}) (result ResponseBody) {
 	result.Code = http.StatusOK
-	result.Msg = "Normal......"
+	result.Msg = "操作成功!"
 	result.Data = data
 	return result
 }

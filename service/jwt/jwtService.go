@@ -13,7 +13,7 @@ func JWTAuth() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.Request.Header.Get("token")
 		if token == "" {
-			Response.ResponseBody{}.FailRes(errors.New("请求未携带token，无权限访问"))
+			c.JSON(500,Response.ResponseBody{}.FailResWithMsg("请求未携带token，无权限访问",errors.New("请求未携带token，无权限访问")))
 			c.Abort()
 			return
 		}
@@ -24,11 +24,11 @@ func JWTAuth() gin.HandlerFunc {
 		//fmt.Println("claims", claims)
 		if err != nil {
 			if err == TokenExpired {
-				Response.ResponseBody{}.FailRes(errors.New("授权已过期"))
+				c.JSON(500,Response.ResponseBody{}.FailResWithMsg("授权已过期",errors.New("授权已过期")))
 				c.Abort()
 				return
 			}
-			Response.ResponseBody{}.FailRes(err)
+			c.JSON(500,Response.ResponseBody{}.FailRes(err))
 			c.Abort()
 			return
 		}
