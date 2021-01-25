@@ -12,6 +12,7 @@ func RolesHandler(c *gin.Context) {
 	roles, err := user.GetAllRoles(c)
 	if err != nil {
 		c.JSON(500, Response.ResponseBody{}.FailRes(err))
+		return
 	}
 	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(roles))
 }
@@ -21,6 +22,7 @@ func RoleByIdHandler(c *gin.Context) {
 	roles, err := user.GetRoleById(utils.StrToUInt(ID))
 	if err != nil {
 		c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(err))
+		return
 	}
 	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(roles))
 }
