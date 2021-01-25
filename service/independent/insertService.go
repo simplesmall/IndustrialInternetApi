@@ -3,12 +3,20 @@ package independent
 import (
 	"IndustrialInternetApi/config"
 	"IndustrialInternetApi/model"
+	"IndustrialInternetApi/model/paginate"
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllApplicationInserts() (applicationInserts []model.ApplicationInsert,err error) {
-	if err = config.DB.Find(&applicationInserts).Error;err !=nil{
-		return nil, err
+func GetAllApplicationInserts(c *gin.Context) (applicationInsertComposer paginate.ApplicationInsertComposer,err error) {
+	page := c.Param("page")
+	pagesize := c.Param("pageSize")
+
+	var inserts []model.ApplicationInsert
+	SQL:=config.DB.Preload("Permission").Model(&model.Role{})
+	applicationInsertComposer,err = paginate.ApplicationInsertPaginator(SQL,page,pagesize, inserts)
+
+	if err = config.DB.Find(&applicationInsertComposer).Error;err !=nil{
+		return applicationInsertComposer, err
 	}
 	return
 }
@@ -37,9 +45,16 @@ func DeleteApplicationInsert(ID uint)(affe int64){
 	return
 }
 
-func GetAllMyInserts() (myInserts []model.MyInsert,err error) {
-	if err = config.DB.Find(&myInserts).Error;err !=nil{
-		return nil, err
+func GetAllMyInserts(c *gin.Context) (myInsertComposer paginate.MyInsertComposer,err error) {
+	page := c.Param("page")
+	pagesize := c.Param("pageSize")
+
+	var inserts []model.MyInsert
+	SQL:=config.DB.Model(&model.Role{})
+	myInsertComposer,err = paginate.MyInsertPaginator(SQL,page,pagesize, inserts)
+
+	if err = config.DB.Find(&myInsertComposer).Error;err !=nil{
+		return myInsertComposer, err
 	}
 	return
 }
@@ -69,6 +84,8 @@ func DeleteMyInsert(ID uint)(affe int64){
 }
 
 func GetAllMyDevices() (myDevices []model.MyDevice,err error) {
+
+
 	if err = config.DB.Preload("MyInserts").Find(&myDevices).Error;err !=nil{
 		return nil, err
 	}

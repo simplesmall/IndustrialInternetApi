@@ -40,10 +40,12 @@ func DeleteMirror(ID uint)(affe int64){
 	return
 }
 
-func GetAllApplications() (parkLibs []model.Application,err error) {
-	if err = config.DB.Preload("Mirrors").Find(&parkLibs).Error;err !=nil{
-		return nil, err
-	}
+func GetAllApplications(c *gin.Context) (applicationComposer paginate.ApplicationComposer,err error) {
+	page := c.Param("page")
+	pagesize := c.Param("pageSize")
+	var applications []model.Application
+	SQL:=config.DB.Model(&model.Application{}).Preload("Mirrors")
+	applicationComposer,err = paginate.ApplicationPaginator(SQL,page,pagesize, applications)
 	return
 }
 func GetApplicationById(ID uint) (parkLib model.Application,err error) {

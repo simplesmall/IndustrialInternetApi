@@ -102,3 +102,93 @@ func MirrorPaginator(sql *gorm.DB,page,size string, roles []model.Mirror) (data 
 	data.Total = affected
 	return data,err
 }
+
+type ApplicationComposer struct {
+	Pagination
+	Data []model.Application `json:"data"`
+}
+
+func ApplicationPaginator(sql *gorm.DB,page,size string, applications []model.Application) (data ApplicationComposer,err error) {
+	intPage := utils.StrToInt(page)
+	intSize := utils.StrToInt(size)
+	if intPage<1 {
+		intPage = 1
+	}
+	if intSize<1 {
+		intSize = 1
+	}else if intSize >100 {
+		intSize = 100
+	}
+	composeSQL := sql.Offset((intPage-1)*intSize).Find(&applications)
+	if err = composeSQL.Error; err != nil {
+		data.Ok = false
+		return data,err
+	}
+	affected := composeSQL.RowsAffected
+	data.Data = applications
+	data.Ok = true
+	data.Size = intSize
+	data.Page = intPage
+	data.Total = affected
+	return data,err
+}
+
+type ApplicationInsertComposer struct {
+	Pagination
+	Data []model.ApplicationInsert `json:"data"`
+}
+
+func ApplicationInsertPaginator(sql *gorm.DB,page,size string, applications []model.ApplicationInsert) (data ApplicationInsertComposer,err error) {
+	intPage := utils.StrToInt(page)
+	intSize := utils.StrToInt(size)
+	if intPage<1 {
+		intPage = 1
+	}
+	if intSize<1 {
+		intSize = 1
+	}else if intSize >100 {
+		intSize = 100
+	}
+	composeSQL := sql.Offset((intPage-1)*intSize).Find(&applications)
+	if err = composeSQL.Error; err != nil {
+		data.Ok = false
+		return data,err
+	}
+	affected := composeSQL.RowsAffected
+	data.Data = applications
+	data.Ok = true
+	data.Size = intSize
+	data.Page = intPage
+	data.Total = affected
+	return data,err
+}
+
+type MyInsertComposer struct {
+	Pagination
+	Data []model.MyInsert `json:"data"`
+}
+
+func MyInsertPaginator(sql *gorm.DB,page,size string, applications []model.MyInsert) (data MyInsertComposer,err error) {
+	intPage := utils.StrToInt(page)
+	intSize := utils.StrToInt(size)
+	if intPage<1 {
+		intPage = 1
+	}
+	if intSize<1 {
+		intSize = 1
+	}else if intSize >100 {
+		intSize = 100
+	}
+	composeSQL := sql.Offset((intPage-1)*intSize).Find(&applications)
+	if err = composeSQL.Error; err != nil {
+		data.Ok = false
+		return data,err
+	}
+	affected := composeSQL.RowsAffected
+	data.Data = applications
+	data.Ok = true
+	data.Size = intSize
+	data.Page = intPage
+	data.Total = affected
+	return data,err
+}

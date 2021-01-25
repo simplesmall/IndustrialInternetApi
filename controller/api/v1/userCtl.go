@@ -26,33 +26,40 @@ func UsersHandler(c *gin.Context) {
 
 func UserByIdHandler(c *gin.Context) {
 	ID := c.Param("id")
-	userById, _ := user.GetUserById(utils.StrToUInt(ID))
-	//errorResult(c, err)
+	userById, err := user.GetUserById(utils.StrToUInt(ID))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, Response.ResponseBody{}.FailRes(err))
+		return
+	}
 	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(userById))
 }
 
 func CreateUserHandler(c *gin.Context) {
 	createUser, affe := user.CreateUser(c)
-	c.JSON(200,gin.H{
-		"createUser":createUser,
-		"affe":affe,
-	})
+	if affe!=1{
+		c.JSON(500,Response.ResponseBody{}.FailRes("创建失败"))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(createUser))
 }
 
 func UpdateUserHandler(c *gin.Context) {
 	id:=c.Param("id")
 	createUser, affe := user.UpdateUser(c,utils.StrToUInt(id))
-	c.JSON(200,gin.H{
-		"updateUser":createUser,
-		"affe":affe,
-	})
+	if affe!=1{
+		c.JSON(500,Response.ResponseBody{}.FailRes("更新失败"))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(createUser))
 }
 
 func DeleteUserHandler(c *gin.Context) {
 	id := c.Param("id")
 	affe := user.DeleteUser(utils.StrToUInt(id))
-	c.JSON(200, gin.H{
-		"affe": affe,
-	})
+	if affe!=1{
+		c.JSON(500,Response.ResponseBody{}.FailRes("删除失败"))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(affe))
 }
 

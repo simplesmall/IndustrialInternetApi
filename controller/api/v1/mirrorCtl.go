@@ -52,7 +52,7 @@ func DeleteMirrorHandler(c *gin.Context)  {
 }
 
 func GetAllApplicationsHandler(c *gin.Context)  {
-	parkLibs, err := independent.GetAllApplications()
+	parkLibs, err := independent.GetAllApplications(c)
 	if err != nil {
 		c.JSON(500,Response.ResponseBody{}.FailRes(err))
 		return
