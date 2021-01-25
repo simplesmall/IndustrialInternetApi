@@ -5,7 +5,6 @@ import (
 	"IndustrialInternetApi/controller/api/auth"
 	"IndustrialInternetApi/controller/api/database"
 	version1 "IndustrialInternetApi/controller/api/v1"
-	"IndustrialInternetApi/service/jwt"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,18 +17,17 @@ func InitServer() {
 	_ = database.AutoMigrate()
 	//token中间件 JWT 放行路由
 	//swagger 配置
-	api := r.Group("api")
+	// token 测试
+	auther :=r.Group("auth")
+	// 使用token鉴权中间件 下面这几个API放入白名单
 	{
-		// token 测试
-		auther :=api.Group("auth")
-		// 使用token鉴权中间件 下面这几个API放入白名单
-		auther.Use(jwt.JWTAuth())
-		{
-			auther.POST("/login", auth.LoginHandler)
-			auther.GET("/logout",auth.LogoutHandler)
-			auther.GET("/updateToken",auth.InitiativeExpireHandler)
-		}
-
+		auther.POST("/login", auth.LoginHandler)
+		auther.GET("/logout",auth.LogoutHandler)
+		auther.GET("/updateToken",auth.InitiativeExpireHandler)
+	}
+	api := r.Group("api")
+	//api.Use(jwt.JWTAuth())
+	{
 		v1 := api.Group("v1")
 
 		// RBAC
