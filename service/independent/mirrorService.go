@@ -3,17 +3,20 @@ package independent
 import (
 	"IndustrialInternetApi/config"
 	"IndustrialInternetApi/model"
+	"IndustrialInternetApi/model/paginate"
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllMirrors() (parkLibs []model.Mirror,err error) {
-	if err = config.DB.Find(&parkLibs).Error;err !=nil{
-		return nil, err
-	}
-	return
+func GetAllMirrors(c *gin.Context) (mirrors paginate.MirrorComposer,err error) {
+	page := c.Param("page")
+	pagesize := c.Param("pageSize")
+	var userList []model.Mirror
+	SQL:=config.DB.Model(&model.Mirror{})
+	mirrors,err = paginate.MirrorPaginator(SQL,page,pagesize,userList)
+	return	mirrors,err
 }
-func GetMirrorById(ID uint) (parkLib model.Mirror,err error) {
-	if err =config.DB.Where("id = ?",ID).First(&parkLib).Error;err != nil{
+func GetMirrorById(ID uint) (mirror model.Mirror,err error) {
+	if err =config.DB.Where("id = ?",ID).First(&mirror).Error;err != nil{
 		return model.Mirror{}, err
 	}
 	return
