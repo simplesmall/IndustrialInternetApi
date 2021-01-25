@@ -18,7 +18,7 @@ type UserComposer struct {
 	Data []model.User `json:"data"`
 }
 
-func UserPaginator(sql *gorm.DB,page,size string, flexComposer []model.User) (data UserComposer,err error) {
+func UserPaginator(sql *gorm.DB,page,size string, users []model.User) (data UserComposer,err error) {
 	intPage := utils.StrToInt(page)
 	intSize := utils.StrToInt(size)
 	if intPage<1 {
@@ -29,13 +29,43 @@ func UserPaginator(sql *gorm.DB,page,size string, flexComposer []model.User) (da
 	}else if intSize >100 {
 		intSize = 100
 	}
-	composeSQL := sql.Offset((intPage-1)*intSize).Find(&flexComposer)
+	composeSQL := sql.Offset((intPage-1)*intSize).Find(&users)
 	if err = composeSQL.Error; err != nil {
 		data.Ok = false
 		return data,err
 	}
 	affected := composeSQL.RowsAffected
-	data.Data = flexComposer
+	data.Data = users
+	data.Ok = true
+	data.Size = intSize
+	data.Page = intPage
+	data.Total = affected
+	return data,err
+}
+
+type RoleComposer struct {
+	Pagination
+	Data []model.Role `json:"data"`
+}
+
+func RolePaginator(sql *gorm.DB,page,size string, roles []model.Role) (data RoleComposer,err error) {
+	intPage := utils.StrToInt(page)
+	intSize := utils.StrToInt(size)
+	if intPage<1 {
+		intPage = 1
+	}
+	if intSize<1 {
+		intSize = 1
+	}else if intSize >100 {
+		intSize = 100
+	}
+	composeSQL := sql.Offset((intPage-1)*intSize).Find(&roles)
+	if err = composeSQL.Error; err != nil {
+		data.Ok = false
+		return data,err
+	}
+	affected := composeSQL.RowsAffected
+	data.Data = roles
 	data.Ok = true
 	data.Size = intSize
 	data.Page = intPage

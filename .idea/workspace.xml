@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc082658-f06d-477f-be98-ede349694834" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model/compose/userCom.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/paginate/paginator.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/api/v1/userCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/userCtl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/UserService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/UserService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/paginate/paginator.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/paginate/paginator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/RoleService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/RoleService.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +56,7 @@
       <recent name="D:\Go\GoProjects\IndustrialInternetApi\config" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build paginator.go">
+  <component name="RunManager" selected="Go Build.go build IndustrialInternetApi">
     <configuration name="go build IndustrialInternetApi" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="IndustrialInternetApi" />
       <working_directory value="$PROJECT_DIR$" />
@@ -69,7 +69,7 @@
     <configuration name="go build paginator.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="IndustrialInternetApi" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
+      <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$/model/paginate/paginator.go" />
       <package value="IndustrialInternetApi" />
       <directory value="$PROJECT_DIR$" />
@@ -77,8 +77,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build paginator.go" />
         <item itemvalue="Go Build.go build IndustrialInternetApi" />
+        <item itemvalue="Go Build.go build paginator.go" />
       </list>
     </recent_temporary>
   </component>

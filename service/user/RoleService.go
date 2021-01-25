@@ -3,13 +3,19 @@ package user
 import (
 	"IndustrialInternetApi/config"
 	"IndustrialInternetApi/model"
+	"IndustrialInternetApi/model/paginate"
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllRoles() (roles []model.Role, err error) {
-	err = config.DB.Preload("Permission").Model(&model.Role{}).Find(&roles).Error
+func GetAllRoles(c *gin.Context) (composer paginate.RoleComposer, err error) {
+	page := c.Param("page")
+	pagesize := c.Param("pageSize")
+
+	var userList []model.Role
+	SQL:=config.DB.Preload("Permission").Model(&model.Role{})
+	composer,err = paginate.RolePaginator(SQL,page,pagesize,userList)
 	if err != nil {
-		return nil, err
+		return paginate.RoleComposer{}, err
 	}
 	return
 }

@@ -9,7 +9,7 @@ import (
 )
 
 func RolesHandler(c *gin.Context) {
-	roles, err := user.GetAllRoles()
+	roles, err := user.GetAllRoles(c)
 	if err != nil {
 		c.JSON(500, Response.ResponseBody{}.FailRes(err))
 	}
