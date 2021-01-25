@@ -3,16 +3,19 @@ package user
 import (
 	"IndustrialInternetApi/config"
 	"IndustrialInternetApi/model"
+	"IndustrialInternetApi/model/paginate"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 )
 
-func GetAllUsers() (users []model.User, err error) {
-	err = config.DB.Preload("Role").Preload("Role.Permission").Model(&model.User{}).Find(&users).Error
-	if err != nil {
-		return nil, err
-	}
-	return
+func GetAllUsers(c *gin.Context) (Composer paginate.UserComposer, err error) {
+	page := c.Param("page")
+	pagesize := c.Param("pageSize")
+
+	var userList []model.User
+	SQL:=config.DB.Model(&model.User{}).Preload("Role").Preload("Role.Permission")
+	Composer,err = paginate.UserPaginator(SQL,page,pagesize,userList)
+	return Composer,err
 }
 
 func GetUserById(ID uint) (user model.User, err error) {

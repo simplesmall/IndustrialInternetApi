@@ -4,6 +4,7 @@ import (
 	"IndustrialInternetApi/common/utils"
 	Response "IndustrialInternetApi/model/response"
 	"IndustrialInternetApi/service/user"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -15,10 +16,13 @@ func errorResult(c *gin.Context, err error) {
 	}
 }
 
-
 func UsersHandler(c *gin.Context) {
-	users, err := user.GetAllUsers()
-	errorResult(c, err)
+	users, err := user.GetAllUsers(c)
+	fmt.Println(users,err)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, Response.ResponseBody{}.FailRes(err))
+		return
+	}
 	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(users))
 }
 
