@@ -20,16 +20,15 @@ func GetAllRoles(c *gin.Context) (composer paginate.RoleComposer, err error) {
 	return
 }
 
-func GetRoleById(ID uint) (role []model.Role, err error) {
+func GetRoleById(ID uint) (role model.Role, err error) {
 	var userId = ID
-	// Permission
-	var user model.User
-	err = config.DB.Model(&model.User{}).Preload("Role").Where("id = ?", userId).First(&user).Error
+	var user model.Role
+	err = config.DB.Model(&model.Role{}).Preload("Role").Where("id = ?", userId).First(&user).Error
 	found := config.DB.Model(&model.User{}).Preload("Role").Where("id = ?", userId).First(&user).RecordNotFound()
 	if found || err != nil {
-		return nil, err
+		return model.Role{}, err
 	}
-	return user.Role, err
+	return user, err
 }
 
 func CreateRole(c *gin.Context) (role model.Role,affe int64) {
