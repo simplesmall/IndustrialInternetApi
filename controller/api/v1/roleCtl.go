@@ -22,7 +22,6 @@ func RoleByIdHandler(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(err))
 	}
-	//errorResult(c, err)
 	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(roles))
 }
 
