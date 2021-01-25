@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fc082658-f06d-477f-be98-ede349694834" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/v1/userCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/userCtl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/paginate/paginator.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/paginate/paginator.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/RoleService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/RoleService.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
