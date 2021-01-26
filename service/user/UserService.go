@@ -88,3 +88,39 @@ func DeleteUser(ID uint)(affe int64){
 	affe = config.DB.Model(&user).Where("id = ?", ID).First(&user).Delete(&user).RowsAffected
 	return
 }
+
+func CreateTenant(c *gin.Context) (user model.User, affe int64) {
+	var userIdList model.UserIdList
+	_ = c.BindJSON(&userIdList)
+	//var idList = userIdList.Ids
+	//处理密码
+	inputPwd := []byte(userIdList.User.Password)
+	//生成hash存入数据库   bcrypt.GenerateFromPassword(originPwd, bcrypt.DefaultCost)    bcrypt.CompareHashAndPassword(byteHash, plainPwd)
+	hashPwd, _ := bcrypt.GenerateFromPassword(inputPwd, bcrypt.DefaultCost) //password为string类型
+	userIdList.User.Password = string(hashPwd)
+	//根据idList ID 取出角色列表
+	var roles []model.Role
+	config.DB.Model(&model.Role{}).Where("id = ?",2).Find(&roles)
+	// 将列表关系数据绑定到新建用户上
+	//给定默认权限
+	userIdList.User.Role = roles
+	affe = config.DB.Create(&userIdList.User).RowsAffected
+	return userIdList.User,affe
+}
+
+func CreateEnterUser(c *gin.Context) (user model.User, affe int64) {
+	var userIdList model.UserIdList
+	_ = c.BindJSON(&userIdList)
+	//处理密码
+	inputPwd := []byte(userIdList.User.Password)
+	//生成hash存入数据库   bcrypt.GenerateFromPassword(originPwd, bcrypt.DefaultCost)    bcrypt.CompareHashAndPassword(byteHash, plainPwd)
+	hashPwd, _ := bcrypt.GenerateFromPassword(inputPwd, bcrypt.DefaultCost) //password为string类型
+	userIdList.User.Password = string(hashPwd)
+	//根据idList ID 取出角色列表
+	var roles []model.Role
+	config.DB.Model(&model.Role{}).Where("id = ?", 3).Find(&roles)
+	// 将列表关系数据绑定到新建用户上
+	userIdList.User.Role = roles
+	affe = config.DB.Create(&userIdList.User).RowsAffected
+	return userIdList.User,affe
+}

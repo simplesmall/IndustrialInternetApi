@@ -27,7 +27,7 @@ func InitServer() {
 		auther.GET("/updateToken",auth.InitiativeExpireHandler)
 	}
 	api := r.Group("api")
-	//api.Use(jwt.JWTAuth())
+	api.Use(jwt.JWTAuth())
 	{
 		v1 := api.Group("v1")
 
@@ -56,12 +56,21 @@ func InitServer() {
 			// Role 的创建,更新,删除
 			v1.POST("/role",version1.CreateRoleHandler)
 			v1.PUT("/role/:id", version1.UpdateRoleHandler)
+			v1.PUT("/deliveRole/:id", version1.DeliveRoleHandler)
 			v1.DELETE("/role/:id", version1.DeleteRoleHandler)
 
 			// User 的创建,更新,删除
 			v1.POST("/user",version1.CreateUserHandler)
 			v1.PUT("/user/:id", version1.UpdateUserHandler)
 			v1.DELETE("/user/:id", version1.DeleteUserHandler)
+		}
+
+		//租户用户管理
+		{
+			//租户
+			v1.POST("/tenant",version1.CreateTenantHandler)
+			//用户
+			v1.POST("/enterUser",version1.CreateEnterUserHandler)
 		}
 
 		// 镜像表+应用表  mirror  application

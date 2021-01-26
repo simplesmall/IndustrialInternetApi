@@ -45,6 +45,15 @@ func UpdateRoleHandler(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(role))
 }
+func DeliveRoleHandler(c *gin.Context) {
+	id := c.Param("id")
+	role, affe := user.DeliveRole(c, utils.StrToUInt(id))
+	if affe == 0 {
+		c.JSON(500, Response.ResponseBody{}.FailRes("更新失败"))
+		return
+	}
+	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(role))
+}
 
 func DeleteRoleHandler(c *gin.Context) {
 	id := c.Param("id")

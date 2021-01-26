@@ -128,3 +128,7 @@ type UserIdList struct {
 	User
 	IdList
 }
+
+type DeliveRole struct {
+	Names []string `json:"names"`
+}

@@ -63,3 +63,20 @@ func DeleteUserHandler(c *gin.Context) {
 	c.JSON(200,Response.ResponseBody{}.OKResult(affe))
 }
 
+func CreateTenantHandler(c *gin.Context) {
+	createUser, affe := user.CreateTenant(c)
+	if affe!=1{
+		c.JSON(500,Response.ResponseBody{}.FailRes("创建失败"))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(createUser))
+}
+
+func CreateEnterUserHandler(c *gin.Context) {
+	createUser, affe := user.CreateEnterUser(c)
+	if affe!=1{
+		c.JSON(500,Response.ResponseBody{}.FailRes("创建失败"))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(createUser))
+}

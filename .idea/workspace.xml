@@ -21,15 +21,39 @@
   <component name="ChangeListManager">
     <list default="true" id="58856b7b-a367-43c8-9dc8-1a66a39bcd22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/v1/permissionCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/permissionCtl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/PermissionService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/PermissionService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/middleware/corsMid.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/middleware/corsMid.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/utils/converter.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils/converter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/libraryCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/libraryCtl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/reportCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/reportCtl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/templateCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/templateCtl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/userCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/userCtl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/compose/userCom.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/compose/userCom.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/insertMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/insertMod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/libraryMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/libraryMod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/mirrorMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/mirrorMod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/reportMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/reportMod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/response/result.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/result.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/templateMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/templateMod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/userMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/userMod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/routers.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/routers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/independent/libraryService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/independent/libraryService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/independent/reportService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/independent/reportService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/independent/templateService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/independent/templateService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/jwt/authService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/jwt/authService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/RoleService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/RoleService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/UserService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/UserService.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="GOROOT" path="$APPLICATION_HOME_DIR$/SDK" />
+  <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -37,7 +61,7 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1nbSpD9yigCTbWUEt0NxG0FTEDe" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -53,6 +77,7 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="go.sdk" />
   </component>
   <component name="RunManager">
     <configuration name="go build IndustrialInternetApi" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -94,29 +119,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="2517" height="213" key="GridCell.Tab.0.bottom" timestamp="1611664313244">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="213" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611664313244" />
-    <state width="2517" height="213" key="GridCell.Tab.0.center" timestamp="1611664313244">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="213" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611664313244" />
-    <state width="2517" height="213" key="GridCell.Tab.0.left" timestamp="1611664313244">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="213" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611664313244" />
-    <state width="2517" height="213" key="GridCell.Tab.0.right" timestamp="1611664313244">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="213" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611664313244" />
   </component>
 </project>

@@ -6,8 +6,8 @@ import (
 	"IndustrialInternetApi/model/paginate"
 	"IndustrialInternetApi/service/jwt"
 	"errors"
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"strconv"
 )
 
 func GetAllRoles(c *gin.Context) (composer paginate.RoleComposer, err error) {
@@ -68,6 +68,28 @@ func UpdateRole(c *gin.Context,ID uint) (role model.Role,affe int64) {
 	return roleIdList.Role,affe
 }
 
+func DeliveRole(c *gin.Context,ID uint) (role model.Role,affe int64) {
+	var deliveRole model.DeliveRole
+	_ = c.BindJSON(&deliveRole)
+
+	var names = deliveRole.Names
+	//根据permission ID 取出权限列表
+	fmt.Println(names)
+	var permissions []model.Permission
+
+	config.DB.Model(&model.Permission{}).Where("name in (?)", names).Find(&permissions)
+	// 将列表关系数据绑定到新建角色上
+	fmt.Println(permissions)
+	role.ID = ID
+	role.Permission = permissions
+	affe = config.DB.Model(&role).Where("id = ?",ID).Update(&role).RowsAffected
+
+	// 更新关系
+	config.DB.Model(&role.Permission).Update(&role.Permission)
+	config.DB.Model(&role).Association("Permission").Replace(&permissions)
+	return role,affe
+}
+
 func DeleteRole(ID uint)(affe int64){
 	var role model.Role
 	affe = config.DB.Model(&role).Where("id = ?", ID).First(&role).Delete(&role).RowsAffected
@@ -119,7 +141,7 @@ func GetLoginUser(c *gin.Context) (UserAndPermission, bool) {
 		var permissions []model.Permission
 		config.DB.Find(&permissions)
 		for _, value := range permissions {
-			resultData.Permissions = append(resultData.Permissions, strconv.Itoa(int(value.ID))) // 追加1个元素
+			resultData.Permissions = append(resultData.Permissions, value.Name) // 追加1个元素
 		}
 	} else {
 		var roles []model.Role
@@ -129,7 +151,7 @@ func GetLoginUser(c *gin.Context) (UserAndPermission, bool) {
 			var permissions []model.Permission
 			config.DB.Model(&item).Association("Permission").Find(&permissions)
 			for _, value := range permissions {
-				resultData.Permissions = append(resultData.Permissions, strconv.Itoa(int(value.ID))) // 追加1个元素
+				resultData.Permissions = append(resultData.Permissions, value.Name) // 追加1个元素
 			}
 		}
 		resultData.Permissions = removeDuplicateElement(resultData.Permissions)
