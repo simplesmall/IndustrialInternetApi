@@ -3,6 +3,8 @@ package database
 import (
 	"IndustrialInternetApi/config"
 	"IndustrialInternetApi/model"
+	"github.com/jinzhu/gorm"
+	"golang.org/x/crypto/bcrypt"
 )
 
 func AutoMigrate()(err error){
@@ -25,6 +27,81 @@ func AutoMigrate()(err error){
 			panic(err)
 		}
 	}
+	user :=model.User{}
+	if noAdmin :=config.DB.Where("account = ?","admin").First(&user).RecordNotFound();noAdmin{
+		SeedDB()
+	}
 	return
 }
 
+func SeedDB()  {
+	//初始化插入测试数据
+	// 一级目录权限
+	per1 := model.Permission{gorm.Model{}, "dataShow", "dataShow", "el-icon-coin", "数据显示", "0", "1", "1"}
+	per2 := model.Permission{gorm.Model{}, "appMarket", "appMarket", "el-icon-s-goods", "应用超市", "0", "1", "1"}
+	per3 := model.Permission{gorm.Model{}, "operationManage", "operationManage", "el-icon-s-ticket", "运营管理", "0", "1", "1"}
+	per4 := model.Permission{gorm.Model{}, "smartConnect", "smartConnect", "dataShow", "智能连接", "0", "1", "1"}
+	per5 := model.Permission{gorm.Model{}, "appDevelop", "appDevelop", "el-icon-menu", "应用开发", "0", "1", "1"}
+	per6 := model.Permission{gorm.Model{}, "containerManage", "containerManage", "el-icon-s-platform", "容器管理", "0", "1", "1"}
+	per7 := model.Permission{gorm.Model{}, "system", "system", "el-icon-s-custom", "系统管理", "0", "1", "1"}
+	config.DB.Create(&per1)
+	config.DB.Create(&per2)
+	config.DB.Create(&per3)
+	config.DB.Create(&per4)
+	config.DB.Create(&per5)
+	config.DB.Create(&per6)
+	config.DB.Create(&per7)
+	// 系统设置权限
+	per71 := model.Permission{gorm.Model{}, "account", "account", "el-icon-coin", "账号管理", "7", "1", "1"}
+	per72 := model.Permission{gorm.Model{}, "role", "role", "el-icon-coin", "角色管理", "7", "1", "1"}
+	config.DB.Create(&per71)
+	config.DB.Create(&per72)
+	// 租户用户权限
+	per31 := model.Permission{gorm.Model{}, "tenant", "tenant", "el-icon-coin", "租户管理", "3", "1", "1"}
+	per32 := model.Permission{gorm.Model{}, "user", "user", "el-icon-coin", "用户管理", "3", "1", "1"}
+	config.DB.Create(&per31)
+	config.DB.Create(&per32)
+
+	//二级目录权限
+	//per11 := model.Permission{gorm.Model{}, "areaMonitor", "areaMonitor", "el-icon-coin", "区域监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "investmentMonitor", "investmentMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "enterpriseMonitor", "enterpriseMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+
+
+	//系统管理员权限
+	normalPermissions :=[]model.Permission{per1,per2,per3,per4,per5,per6}
+	enterprisePermissions :=[]model.Permission{per1,per2,per3,per4,per5,per6,per31,per32}
+	adminPermissions :=[]model.Permission{per1,per2,per3,per4,per5,per6,per7,per71,per72,per31,per32}
+	//系统管理员角色
+	normalRole:=model.Role{gorm.Model{}, "普通用户", "公用权限", normalPermissions}
+	enterpriseRole:=model.Role{gorm.Model{}, "企业用户", "公用权限", enterprisePermissions}
+	adminRole:=model.Role{gorm.Model{}, "超级管理", "公用权限", adminPermissions}
+
+	//创建超级管理员+企业用户+普通用户
+	admin:=model.User{gorm.Model{}, "系统管理员", "admin", formatPwd("123456"), "0", "1", "1", "", 0, "", "127.0.0.1", "no", "1","13000011234","admin@example.com", "系统管理员",[]model.Role{adminRole}}
+	enterprise:=model.User{gorm.Model{}, "企业用户", "enterprise", formatPwd("123456"), "1", "1", "1", "", 0, "", "127.0.0.1", "no", "2","13023311234","enterprise@example.com", "企业用户", []model.Role{enterpriseRole}}
+	normal:=model.User{gorm.Model{}, "普通用户", "normal", formatPwd("123456"), "0", "1", "1", "", 0, "", "127.0.0.1", "no", "3", "13067871234","normal@example.com", "普通用户",[]model.Role{normalRole}}
+	config.DB.Create(&admin)
+	config.DB.Create(&enterprise)
+	config.DB.Create(&normal)
+}
+
+func formatPwd(pwd string) (formatPwd string) {
+	inputPwd := []byte(pwd)
+	//生成hash存入数据库
+	hashPwd, _ := bcrypt.GenerateFromPassword(inputPwd, bcrypt.DefaultCost) //password为string类型
+	formatPwd = string(hashPwd)
+	return formatPwd
+}

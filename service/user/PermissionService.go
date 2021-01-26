@@ -43,7 +43,52 @@ func GetPermisById(ID uint) (pers []model.Permission, err error) {
 		permissions = append(permissions, v.Permission...)
 	}
 	pers = permissions
+	//此处格式化权限表树形输出
 	return pers, err
+}
+func GetUserPermissionTreeById(ID uint) (dataList []interface{}, err error) {
+	var userId = ID
+	// 根据UserID 拿到 Roles :user.Roles
+	var user model.User
+	err = config.DB.Model(&model.User{}).Preload("Role").Where("id = ?", userId).First(&user).Error
+	if err != nil {
+		return nil, err
+	}
+	// 将user.Roles取出保存一个rolesID => 将roles的ID重构出来
+	var roles []model.Role
+	roles = user.Role
+	rolesID := []uint{}
+	for _, v := range roles {
+		rolesID = append(rolesID, v.ID)
+	}
+
+	//取出permission
+	var roleForPermssions []model.Role
+	err = config.DB.Model(&model.Role{}).Preload("Permission").Where("id in (?)", rolesID).Find(&roleForPermssions).Error
+	if err != nil {
+		return nil, err
+	}
+	// 整合输出对应用户所有权限 Permissions
+	var permissions []model.Permission
+	for _, v := range roleForPermssions {
+		permissions = append(permissions, v.Permission...)
+	}
+	for _, v := range permissions {
+		// 获取一条数据
+		parent := model.PermissionTree{v.Name,v.Url,v.Icon,v.Describe,v.ParentId,v.Status,v.Type, []*model.PermissionTree{}}
+
+		// 将数据对应的pid的所有数据查出放入 childrenList
+		var childrenList []model.Permission
+		config.DB.Where("parent_id = ?", v.ID).Find(&childrenList)
+
+		for _, c := range childrenList {
+			// 对childrenList中的每一项执行查询
+			child := model.PermissionTree{c.Name,c.Url,c.Icon,c.Describe,c.ParentId,c.Status,c.Type, []*model.PermissionTree{}}
+			parent.Children = append(parent.Children, &child)
+		}
+		dataList = append(dataList, parent)
+	}
+	return dataList, err
 }
 
 /*

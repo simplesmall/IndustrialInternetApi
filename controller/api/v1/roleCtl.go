@@ -29,25 +29,29 @@ func RoleByIdHandler(c *gin.Context) {
 
 func CreateRoleHandler(c *gin.Context) {
 	role, affe := user.CreateRole(c)
-	c.JSON(200, gin.H{
-		"role": role,
-		"affe": affe,
-	})
+	if affe == 0 {
+		c.JSON(500, Response.ResponseBody{}.FailRes("创建成功"))
+		return
+	}
+	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(role))
 }
 
 func UpdateRoleHandler(c *gin.Context) {
 	id := c.Param("id")
 	role, affe := user.UpdateRole(c, utils.StrToUInt(id))
-	c.JSON(200, gin.H{
-		"role": role,
-		"affe": affe,
-	})
+	if affe == 0 {
+		c.JSON(500, Response.ResponseBody{}.FailRes("更新失败"))
+		return
+	}
+	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(role))
 }
 
 func DeleteRoleHandler(c *gin.Context) {
 	id := c.Param("id")
 	affe := user.DeleteRole(utils.StrToUInt(id))
-	c.JSON(200, gin.H{
-		"affe": affe,
-	})
+	if affe == 0 {
+		c.JSON(500, Response.ResponseBody{}.FailRes("删除失败"))
+		return
+	}
+	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult("删除成功"))
 }

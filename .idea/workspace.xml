@@ -20,15 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ccb66ca-a03f-4333-88cb-b84ad55e49e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/IndustrialInternetApi.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/v1/insertCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/insertCtl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/v1/mirrorCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/mirrorCtl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/v1/userCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/userCtl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/paginate/paginator.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/paginate/paginator.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/independent/insertService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/independent/insertService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/independent/mirrorService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/independent/mirrorService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/database/operation.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/database/operation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/permissionCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/permissionCtl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/userMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/userMod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/routers.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/routers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/PermissionService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/PermissionService.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +59,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RunManager">
@@ -115,22 +114,22 @@
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
     <state x="2993" y="534" key="#Go_Modules/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611572541754" />
-    <state width="2517" height="258" key="GridCell.Tab.0.bottom" timestamp="1611577966593">
+    <state width="2517" height="183" key="GridCell.Tab.0.bottom" timestamp="1611646158639">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="258" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611577966593" />
-    <state width="2517" height="258" key="GridCell.Tab.0.center" timestamp="1611577966592">
+    <state width="2517" height="183" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611646158639" />
+    <state width="2517" height="183" key="GridCell.Tab.0.center" timestamp="1611646158638">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="258" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611577966592" />
-    <state width="2517" height="258" key="GridCell.Tab.0.left" timestamp="1611577966591">
+    <state width="2517" height="183" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611646158638" />
+    <state width="2517" height="183" key="GridCell.Tab.0.left" timestamp="1611646158638">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="258" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611577966591" />
-    <state width="2517" height="258" key="GridCell.Tab.0.right" timestamp="1611577966593">
+    <state width="2517" height="183" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611646158638" />
+    <state width="2517" height="183" key="GridCell.Tab.0.right" timestamp="1611646158638">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="258" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611577966593" />
+    <state width="2517" height="183" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611646158638" />
     <state x="2483" y="385" key="SettingsEditor" timestamp="1611572705544">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>

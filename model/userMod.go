@@ -77,7 +77,10 @@ type User struct {
 	IP string `json:"ip" form:"ip"`														//用户IP
 	Token string `gorm:"size:500;column:token" json:"token" form:"token"`				//用户Token
 	Type  string `gorm:"size:10;column:type" json:"type" form:"type"`					//用户类型
-	Role     []Role `gorm:"many2many:user_role"`
+	Phone  string `gorm:"size:20;column:phone" json:"phone" form:"phone"`				//用户手机
+	Email  string `gorm:"size:100;column:email" json:"email" form:"email"`				//用户邮箱
+	Remark  string `gorm:"size:200;column:remark" json:"remark" form:"remark"`				//用户邮箱
+	Role     []Role `gorm:"many2many:user_role" json:"role"`
 }
 
 //角色

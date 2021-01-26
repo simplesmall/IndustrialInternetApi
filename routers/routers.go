@@ -34,13 +34,14 @@ func InitServer() {
 		{
 			// 获取全部  用户  权限  角色
 			v1.GET("/permissions", version1.PermissionsHandler)
-			v1.GET("/permissionsTrees", version1.PermissionsTreeHandler)
-			v1.GET("/permissionTree/:pid", version1.GetPermissionFamilyHandler)
+			v1.GET("/permissionTrees", version1.PermissionsTreeHandler)
+			v1.GET("/permissionTree/:id", version1.PermissionByIdHandler)
+			v1.GET("/userPermissionTree/:id", version1.GetUserPermissionTreeHandler)
 			v1.GET("/roles", version1.RolesHandler)
 			v1.GET("/users", version1.UsersHandler)
 
 			// 根据用户ID获得用户User Roles Permissions
-			v1.GET("/permission/:id", version1.PermissionByIdHandler)
+			v1.GET("/permission/:id", version1.GetPermissionFamilyHandler)
 			v1.GET("/role/:id", version1.RoleByIdHandler)
 			v1.GET("/user/:id", version1.UserByIdHandler)
 
