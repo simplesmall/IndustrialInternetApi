@@ -5,6 +5,7 @@ import (
 	"IndustrialInternetApi/controller/api/auth"
 	"IndustrialInternetApi/controller/api/database"
 	version1 "IndustrialInternetApi/controller/api/v1"
+	"IndustrialInternetApi/service/jwt"
 	"github.com/gin-gonic/gin"
 )
 
@@ -27,6 +28,7 @@ func InitServer() {
 	}
 	api := r.Group("api")
 	//api.Use(jwt.JWTAuth())
+	//api.Use(jwt.JWTAuth())
 	{
 		v1 := api.Group("v1")
 
@@ -38,6 +40,8 @@ func InitServer() {
 			v1.GET("/permissionTree/:id", version1.PermissionByIdHandler)
 			v1.GET("/userPermissionTree/:id", version1.GetUserPermissionTreeHandler)
 			v1.GET("/roles", version1.RolesHandler)
+			v1.GET("/userItem", version1.GetUserItemHandler)
+			v1.GET("/getloginuser",jwt.JWTAuth(), version1.GetLoginUserInfoHandler)
 			v1.GET("/users", version1.UsersHandler)
 
 			// 根据用户ID获得用户User Roles Permissions

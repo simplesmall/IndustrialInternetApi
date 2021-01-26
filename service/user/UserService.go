@@ -47,7 +47,7 @@ func CreateUser(c *gin.Context) (user model.User, affe int64) {
 	var idList = userIdList.Ids
 	//处理密码
 	inputPwd := []byte(userIdList.User.Password)
-	//生成hash存入数据库
+	//生成hash存入数据库   bcrypt.GenerateFromPassword(originPwd, bcrypt.DefaultCost)    bcrypt.CompareHashAndPassword(byteHash, plainPwd)
 	hashPwd, _ := bcrypt.GenerateFromPassword(inputPwd, bcrypt.DefaultCost) //password为string类型
 	userIdList.User.Password = string(hashPwd)
 	//根据idList ID 取出角色列表

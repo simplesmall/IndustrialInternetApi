@@ -1,10 +1,14 @@
 package user
 
 import (
+	"IndustrialInternetApi/common/middleware"
 	"IndustrialInternetApi/config"
 	"IndustrialInternetApi/model"
 	"IndustrialInternetApi/model/paginate"
+	"IndustrialInternetApi/service/jwt"
+	"errors"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
 func GetAllRoles(c *gin.Context) (composer paginate.RoleComposer, err error) {
@@ -69,4 +73,80 @@ func DeleteRole(ID uint)(affe int64){
 	var role model.Role
 	affe = config.DB.Model(&role).Where("id = ?", ID).First(&role).Delete(&role).RowsAffected
 	return
+}
+
+
+// 用户
+type UserForm struct {
+	model.User
+	Roles []int `json:"Roles"`
+}
+
+func GetUserItem(userId int) (user UserForm, err error) {
+	var userInfo UserForm
+	result := config.DB.Preload("Role").First(&userInfo.User, userId)
+
+	var roleIds []int
+	for i := 0; i < len(userInfo.Role); i++ {
+		roleIds = append(roleIds, int(userInfo.Role[i].ID))
+	}
+
+	userInfo.Roles = roleIds
+
+	if result.Error != nil {
+		return userInfo, errors.New("user not find")
+	}
+	return userInfo, nil
+}
+
+//返回用户及权限
+type UserAndPermission struct {
+	User        model.User     `json:"user"`
+	Permissions []string `json:"permissions"`
+}
+
+func GetLoginUser() (UserAndPermission, bool) {
+	j := jwt.NewJWT()
+	jwtClaims, _ := j.ParseToken(middleware.AuthToken)
+
+	var resultData UserAndPermission
+
+	result := config.DB.Preload("Role").First(&resultData.User, jwtClaims.Id)
+	if result.Error != nil {
+		return resultData, false
+	}
+
+	if resultData.User.Type == "1" {
+		var permissions []model.Permission
+		config.DB.Find(&permissions)
+		for _, value := range permissions {
+			resultData.Permissions = append(resultData.Permissions, strconv.Itoa(int(value.ID))) // 追加1个元素
+		}
+	} else {
+		var roles []model.Role
+		config.DB.Model(&resultData.User).Association("Role").Find(&roles)
+
+		for _, item := range roles { //item是值拷贝
+			var permissions []model.Permission
+			config.DB.Model(&item).Association("Permission").Find(&permissions)
+			for _, value := range permissions {
+				resultData.Permissions = append(resultData.Permissions, strconv.Itoa(int(value.ID))) // 追加1个元素
+			}
+		}
+		resultData.Permissions = removeDuplicateElement(resultData.Permissions)
+	}
+	return resultData, true
+}
+
+//数组去重
+func removeDuplicateElement(data []string) []string {
+	result := make([]string, 0, len(data))
+	temp := map[string]struct{}{}
+	for _, item := range data {
+		if _, ok := temp[item]; !ok {
+			temp[item] = struct{}{}
+			result = append(result, item)
+		}
+	}
+	return result
 }

@@ -4,6 +4,7 @@ import (
 	Mysql "IndustrialInternetApi/config"
 	jwt "IndustrialInternetApi/service/jwt"
 	"errors"
+	"fmt"
 	jwtgo "github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 	"strconv"
@@ -25,13 +26,15 @@ func Login(username string, password string) (token JwtToken, err error) {
 	var user User
 	var nullData JwtToken
 
-	obj := Mysql.DB.Where("account = ?", username).First(&user)
+	obj := Mysql.DB.Debug().Where("account = ?", username).First(&user)
+	fmt.Println(obj.Value)
 	if err = obj.Error; err != nil {
 		return  nullData, errors.New("Not found user")
 	}
 
 	//验证密码
 	checkResult := ComparePasswords(user.Password, []byte(password))
+	fmt.Println(user.Password, []byte(password))
 	if !checkResult {
 		return nullData, errors.New("invalid password")
 	}

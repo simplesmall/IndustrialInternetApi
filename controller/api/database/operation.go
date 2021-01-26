@@ -65,19 +65,21 @@ func SeedDB()  {
 	//二级目录权限
 	//per11 := model.Permission{gorm.Model{}, "areaMonitor", "areaMonitor", "el-icon-coin", "区域监测", "1", "1", "1"}
 	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "investmentMonitor", "investmentMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "enterpriseMonitor", "enterpriseMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per13 := model.Permission{gorm.Model{}, "investmentMonitor", "investmentMonitor", "el-icon-coin", "投资监测", "1", "1", "1"}
+	//per14 := model.Permission{gorm.Model{}, "enterpriseMonitor", "enterpriseMonitor", "el-icon-coin", "企业监测", "1", "1", "1"}
+	//per15 := model.Permission{gorm.Model{}, "parkMonitor", "parkMonitor", "el-icon-coin", "园区监测", "1", "1", "1"}
 	//
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per16 := model.Permission{gorm.Model{}, "productMonitor", "productMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per17 := model.Permission{gorm.Model{}, "enterpriLibManage", "enterpriLibManage", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per18 := model.Permission{gorm.Model{}, "projectLibManage", "projectLibManage", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per19 := model.Permission{gorm.Model{}, "areaLibManage", "areaLibManage", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per110 := model.Permission{gorm.Model{}, "getData", "getData", "el-icon-coin", "行业监测", "1", "1", "1"}
 	//
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
-	//per12 := model.Permission{gorm.Model{}, "industryMonitor", "industryMonitor", "el-icon-coin", "行业监测", "1", "1", "1"}
+	//per111 := model.Permission{gorm.Model{}, "getDataCheck", "getDataCheck", "el-icon-coin", "数据采集审核", "1", "1", "1"}
+	//per112 := model.Permission{gorm.Model{}, "tableManage", "tableManage", "el-icon-coin", "报表管理", "1", "1", "1"}
+	//per113 := model.Permission{gorm.Model{}, "enterpriseSubData", "enterpriseSubData", "el-icon-coin", "企业数据上报详情", "1", "1", "1"}
+	//per114 := model.Permission{gorm.Model{}, "mostDataShow", "mostDataShow", "el-icon-coin", "大数据展示", "1", "1", "1"}
+	//config.DB.Create(per11,per12,)
 
 
 	//系统管理员权限

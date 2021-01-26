@@ -55,3 +55,30 @@ func DeleteRoleHandler(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult("删除成功"))
 }
+
+func GetUserItemHandler(c *gin.Context) {
+	id := c.Param("id")
+	//查找
+	userItem, status := user.GetUserItem(utils.StrToInt(id))
+
+	if status != nil {
+		if status.Error() == "user not find" {
+			c.JSON(500, Response.ResponseBody{}.FailRes("该用户不存在"))
+			return
+		} else {
+			c.JSON(500, Response.ResponseBody{}.FailRes("查询失败"))
+			return
+		}
+	}
+	c.JSON(200, Response.ResponseBody{}.OKResult(userItem))
+}
+
+func GetLoginUserInfoHandler(c *gin.Context) {
+	userItem, status := user.GetLoginUser()
+
+	if status {
+		c.JSON(200, Response.ResponseBody{}.OKResult(userItem))
+	} else {
+		c.JSON(500, Response.ResponseBody{}.FailRes("查询失败"))
+	}
+}
