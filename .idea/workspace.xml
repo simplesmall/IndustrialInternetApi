@@ -20,12 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58856b7b-a367-43c8-9dc8-1a66a39bcd22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/IndustrialInternetApi.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/authMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/authMod.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/routers.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/routers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/RoleService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/RoleService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/api/v1/permissionCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/permissionCtl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/PermissionService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/PermissionService.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +52,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="go build IndustrialInternetApi" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -104,21 +102,21 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="2517" height="573" key="GridCell.Tab.0.bottom" timestamp="1611658598600">
+    <state width="2517" height="213" key="GridCell.Tab.0.bottom" timestamp="1611664313244">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="573" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611658598600" />
-    <state width="2517" height="573" key="GridCell.Tab.0.center" timestamp="1611658598599">
+    <state width="2517" height="213" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611664313244" />
+    <state width="2517" height="213" key="GridCell.Tab.0.center" timestamp="1611664313244">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="573" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611658598599" />
-    <state width="2517" height="573" key="GridCell.Tab.0.left" timestamp="1611658598599">
+    <state width="2517" height="213" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611664313244" />
+    <state width="2517" height="213" key="GridCell.Tab.0.left" timestamp="1611664313244">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="573" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611658598599" />
-    <state width="2517" height="573" key="GridCell.Tab.0.right" timestamp="1611658598600">
+    <state width="2517" height="213" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611664313244" />
+    <state width="2517" height="213" key="GridCell.Tab.0.right" timestamp="1611664313244">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="573" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611658598600" />
+    <state width="2517" height="213" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611664313244" />
   </component>
 </project>

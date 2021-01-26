@@ -46,11 +46,16 @@ func GetPermisById(ID uint) (pers []model.Permission, err error) {
 	//此处格式化权限表树形输出
 	return pers, err
 }
-func GetUserPermissionTreeById(ID uint) (dataList []interface{}, err error) {
+
+func GetUserPermissionTreeById(ID uint) (dataList []string, err error) {
 	var userId = ID
 	// 根据UserID 拿到 Roles :user.Roles
 	var user model.User
 	err = config.DB.Model(&model.User{}).Preload("Role").Where("id = ?", userId).First(&user).Error
+	notFound := config.DB.Model(&model.User{}).Preload("Role").Where("id = ?", userId).First(&user).RecordNotFound()
+	if notFound {
+		return []string{},nil
+	}
 	if err != nil {
 		return nil, err
 	}
@@ -63,17 +68,19 @@ func GetUserPermissionTreeById(ID uint) (dataList []interface{}, err error) {
 	}
 
 	//取出permission
-	var roleForPermssions []model.Role
-	err = config.DB.Model(&model.Role{}).Preload("Permission").Where("id in (?)", rolesID).Find(&roleForPermssions).Error
+	var roleForPermssions []model.Permission
+	err = config.DB.Model(&model.Role{}).Where("id in (?)", rolesID).Find(&roleForPermssions).Error
 	if err != nil {
 		return nil, err
 	}
 	// 整合输出对应用户所有权限 Permissions
-	var permissions []model.Permission
+	//var permissions []model.Permission
+	var perIds []string
 	for _, v := range roleForPermssions {
-		permissions = append(permissions, v.Permission...)
+		//permissions = append(permissions, v.Permission...)
+		perIds=append(perIds, v.Name)
 	}
-	for _, v := range permissions {
+	/*for _, v := range permissions {
 		// 获取一条数据
 		parent := model.PermissionTree{v.Name,v.Url,v.Icon,v.Describe,v.ParentId,v.Status,v.Type, []*model.PermissionTree{}}
 
@@ -87,8 +94,8 @@ func GetUserPermissionTreeById(ID uint) (dataList []interface{}, err error) {
 			parent.Children = append(parent.Children, &child)
 		}
 		dataList = append(dataList, parent)
-	}
-	return dataList, err
+	}*/
+	return perIds, err
 }
 
 /*

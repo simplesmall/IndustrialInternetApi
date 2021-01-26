@@ -79,7 +79,9 @@ func SeedDB()  {
 	//per112 := model.Permission{gorm.Model{}, "tableManage", "tableManage", "el-icon-coin", "报表管理", "1", "1", "1"}
 	//per113 := model.Permission{gorm.Model{}, "enterpriseSubData", "enterpriseSubData", "el-icon-coin", "企业数据上报详情", "1", "1", "1"}
 	//per114 := model.Permission{gorm.Model{}, "mostDataShow", "mostDataShow", "el-icon-coin", "大数据展示", "1", "1", "1"}
-	//config.DB.Create(per11,per12,)
+	//config.DB.Create(per11)
+	//config.DB.Create(per11)
+	//config.DB.Create(per11)
 
 
 	//系统管理员权限

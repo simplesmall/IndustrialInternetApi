@@ -3,7 +3,6 @@ package jwt
 import (
 	Response "IndustrialInternetApi/model/response"
 	"errors"
-	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"time"
@@ -32,7 +31,6 @@ func JWTAuth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-		fmt.Println("claims", claims)
 		// 继续交由下一个路由处理,并将解析出的信息传递下去
 		c.Set("claims", claims)
 	}

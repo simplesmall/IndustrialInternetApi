@@ -6,7 +6,6 @@ import (
 	Response "IndustrialInternetApi/model/response"
 	jwt "IndustrialInternetApi/service/jwt"
 	"errors"
-	"fmt"
 	"github.com/gin-gonic/gin"
 )
 
@@ -28,7 +27,6 @@ func LoginHandler(c *gin.Context) {
 
 	//参数校验
 	token, err := model.Login(loginInput.Username, loginInput.Password)
-	fmt.Println(loginInput,token,err)
 	if err != nil {
 		if err.Error() == "record not found" {
 			c.JSON(500,Response.ResponseBody{}.FailRes("该用户不存在"))

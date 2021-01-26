@@ -39,7 +39,7 @@ func InitServer() {
 			v1.GET("/permissionTree/:id", version1.PermissionByIdHandler)
 			v1.GET("/userPermissionTree/:id", version1.GetUserPermissionTreeHandler)
 			v1.GET("/roles", version1.RolesHandler)
-			v1.GET("/userItem", version1.GetUserItemHandler)
+			v1.GET("/userItem/:id", version1.GetUserItemHandler)
 			v1.GET("/getloginuser",jwt.JWTAuth(), version1.GetLoginUserInfoHandler)
 			v1.GET("/users", version1.UsersHandler)
 

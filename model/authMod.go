@@ -4,7 +4,6 @@ import (
 	Mysql "IndustrialInternetApi/config"
 	jwt "IndustrialInternetApi/service/jwt"
 	"errors"
-	"fmt"
 	jwtgo "github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 	"strconv"
@@ -33,7 +32,6 @@ func Login(username string, password string) (token JwtToken, err error) {
 
 	//验证密码
 	checkResult := ComparePasswords(user.Password, []byte(password))
-	fmt.Println(user.Password, password)
 	if !checkResult {
 		return nullData, errors.New("invalid password")
 	}

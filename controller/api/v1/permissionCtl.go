@@ -79,7 +79,7 @@ func GetUserPermissionTreeHandler(c *gin.Context){
 	id := c.Param("id")
 	treeList, err :=user.GetUserPermissionTreeById(utils.StrToUInt(id))
 	if err != nil {
-		c.JSON(500, Response.ResponseBody{}.FailRes(err))
+		c.JSON(404, Response.ResponseBody{}.NotFound())
 		return
 	}
 	c.JSON(http.StatusOK, Response.ResponseBody{}.OKResult(treeList))
