@@ -74,7 +74,7 @@ func GetUserItemHandler(c *gin.Context) {
 }
 
 func GetLoginUserInfoHandler(c *gin.Context) {
-	userItem, status := user.GetLoginUser()
+	userItem, status := user.GetLoginUser(c)
 
 	if status {
 		c.JSON(200, Response.ResponseBody{}.OKResult(userItem))

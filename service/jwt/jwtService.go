@@ -3,6 +3,7 @@ package jwt
 import (
 	Response "IndustrialInternetApi/model/response"
 	"errors"
+	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"time"
@@ -21,7 +22,6 @@ func JWTAuth() gin.HandlerFunc {
 		j := NewJWT()
 		// parseToken 解析token包含的信息
 		claims, err := j.ParseToken(token)
-		//fmt.Println("claims", claims)
 		if err != nil {
 			if err == TokenExpired {
 				c.JSON(500,Response.ResponseBody{}.FailResWithMsg("授权已过期",errors.New("授权已过期")))
@@ -32,6 +32,7 @@ func JWTAuth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
+		fmt.Println("claims", claims)
 		// 继续交由下一个路由处理,并将解析出的信息传递下去
 		c.Set("claims", claims)
 	}

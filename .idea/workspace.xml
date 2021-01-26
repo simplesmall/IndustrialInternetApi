@@ -19,15 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ccb66ca-a03f-4333-88cb-b84ad55e49e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/auth/authCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/auth/authCtl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/database/operation.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/database/operation.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/api/v1/roleCtl.go" afterDir="false" />
+    <list default="true" id="58856b7b-a367-43c8-9dc8-1a66a39bcd22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/IndustrialInternetApi.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/authMod.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/authMod.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/routers.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/routers.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/user/RoleService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/RoleService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/UserService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/UserService.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +39,8 @@
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
-  <component name="ProjectId" id="1nYgUXVNOGLQVObzWkgmTKQXpGo" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectId" id="1nbSpD9yigCTbWUEt0NxG0FTEDe" />
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -53,15 +51,10 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
-    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
-    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="go build IndustrialInternetApi" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -82,11 +75,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7ccb66ca-a03f-4333-88cb-b84ad55e49e4" name="Default Changelist" comment="" />
-      <created>1611572474594</created>
+      <changelist id="58856b7b-a367-43c8-9dc8-1a66a39bcd22" name="Default Changelist" comment="" />
+      <created>1611657477929</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1611572474594</updated>
+      <updated>1611657477929</updated>
     </task>
     <servers />
   </component>
@@ -111,94 +104,21 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="2993" y="534" key="#Go_Modules" timestamp="1611572541754">
+    <state width="2517" height="573" key="GridCell.Tab.0.bottom" timestamp="1611658598600">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state x="2993" y="534" key="#Go_Modules/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611572541754" />
-    <state width="1142" height="466" key="DebuggerActiveHint" timestamp="1611650764552">
+    <state width="2517" height="573" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611658598600" />
+    <state width="2517" height="573" key="GridCell.Tab.0.center" timestamp="1611658598599">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="1142" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611650764552" />
-    <state width="2517" height="381" key="GridCell.Tab.0.bottom" timestamp="1611653098254">
+    <state width="2517" height="573" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611658598599" />
+    <state width="2517" height="573" key="GridCell.Tab.0.left" timestamp="1611658598599">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="381" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611653098254" />
-    <state width="2517" height="381" key="GridCell.Tab.0.center" timestamp="1611653098254">
+    <state width="2517" height="573" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611658598599" />
+    <state width="2517" height="573" key="GridCell.Tab.0.right" timestamp="1611658598600">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="381" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611653098254" />
-    <state width="2517" height="381" key="GridCell.Tab.0.left" timestamp="1611653098254">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="381" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611653098254" />
-    <state width="2517" height="381" key="GridCell.Tab.0.right" timestamp="1611653098254">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="381" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611653098254" />
-    <state width="2517" height="653" key="GridCell.Tab.1.bottom" timestamp="1611653106563">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="653" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611653106563" />
-    <state width="2517" height="653" key="GridCell.Tab.1.center" timestamp="1611653106562">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="653" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611653106562" />
-    <state width="2517" height="653" key="GridCell.Tab.1.left" timestamp="1611653106562">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="653" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611653106562" />
-    <state width="2517" height="653" key="GridCell.Tab.1.right" timestamp="1611653106562">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="653" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611653106562" />
-    <state x="2483" y="385" key="SettingsEditor" timestamp="1611572705544">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state x="2483" y="385" key="SettingsEditor/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611572705544" />
-    <state x="2863" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1611650074610">
-      <screen x="1920" y="0" width="2560" height="1400" />
-    </state>
-    <state x="2863" y="315" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611650074610" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/service/user/RoleService.go</url>
-          <line>109</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/service/user/RoleService.go</url>
-          <line>111</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/service/user/RoleService.go</url>
-          <line>113</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/service/user/RoleService.go</url>
-          <line>114</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/service/user/RoleService.go</url>
-          <line>118</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/service/user/RoleService.go</url>
-          <line>121</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/service/user/RoleService.go</url>
-          <line>123</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state width="2517" height="573" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@1920.0.2560.1400" timestamp="1611658598600" />
   </component>
 </project>

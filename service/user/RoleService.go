@@ -1,7 +1,6 @@
 package user
 
 import (
-	"IndustrialInternetApi/common/middleware"
 	"IndustrialInternetApi/config"
 	"IndustrialInternetApi/model"
 	"IndustrialInternetApi/model/paginate"
@@ -105,9 +104,9 @@ type UserAndPermission struct {
 	Permissions []string `json:"permissions"`
 }
 
-func GetLoginUser() (UserAndPermission, bool) {
+func GetLoginUser(c *gin.Context) (UserAndPermission, bool) {
 	j := jwt.NewJWT()
-	jwtClaims, _ := j.ParseToken(middleware.AuthToken)
+	jwtClaims, _ := j.ParseToken(c.Request.Header.Get("token"))
 
 	var resultData UserAndPermission
 

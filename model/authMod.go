@@ -26,15 +26,14 @@ func Login(username string, password string) (token JwtToken, err error) {
 	var user User
 	var nullData JwtToken
 
-	obj := Mysql.DB.Debug().Where("account = ?", username).First(&user)
-	fmt.Println(obj.Value)
+	obj := Mysql.DB.Where("account = ?", username).First(&user)
 	if err = obj.Error; err != nil {
 		return  nullData, errors.New("Not found user")
 	}
 
 	//验证密码
 	checkResult := ComparePasswords(user.Password, []byte(password))
-	fmt.Println(user.Password, []byte(password))
+	fmt.Println(user.Password, password)
 	if !checkResult {
 		return nullData, errors.New("invalid password")
 	}

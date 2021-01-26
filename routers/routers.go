@@ -28,7 +28,6 @@ func InitServer() {
 	}
 	api := r.Group("api")
 	//api.Use(jwt.JWTAuth())
-	//api.Use(jwt.JWTAuth())
 	{
 		v1 := api.Group("v1")
 
