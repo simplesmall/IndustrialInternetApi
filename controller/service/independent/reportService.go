@@ -3,13 +3,16 @@ package independent
 import (
 	"IndustrialInternetApi/config"
 	"IndustrialInternetApi/model"
+	"IndustrialInternetApi/model/paginate"
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllMonthlyReports() (monthlyReports []model.MonthlyReport,err error) {
-	if err = config.DB.Find(&monthlyReports).Error;err !=nil{
-		return nil, err
-	}
+func GetAllMonthlyReports(c *gin.Context) (monthlyReportComposer paginate.MonthlyReportComposer,err error) {
+	page := c.Param("page")
+	pagesize := c.Param("pageSize")
+	var userList []model.MonthlyReport
+	SQL:=config.DB.Model(&model.MonthlyReport{})
+	monthlyReportComposer,err = paginate.MonthlyReportPaginator(SQL,page,pagesize,userList)
 	return
 }
 func GetMonthlyReportById(ID uint) (monthlyReport model.MonthlyReport,err error) {

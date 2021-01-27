@@ -8,7 +8,7 @@ import (
 )
 
 func GetAllMonthlyReportsHandler(c *gin.Context)  {
-	parkLibs, err := independent.GetAllMonthlyReports()
+	parkLibs, err := independent.GetAllMonthlyReports(c)
 	if err != nil {
 		c.JSON(500,Response.ResponseBody{}.FailRes(err))
 	}

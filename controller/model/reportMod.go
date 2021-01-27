@@ -4,6 +4,7 @@ import "github.com/jinzhu/gorm"
 
 type MonthlyReport struct {
 	gorm.Model
+	Month string `json:"month"`						// 月份
 	TotalValue string `json:"total_value"`			// 总产值
 	IndustAddValue string `json:"indust_add_value"` // 工业附加值
 	BusinessIncome string `json:"business_income"`	// 营业收入

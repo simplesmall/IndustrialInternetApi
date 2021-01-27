@@ -103,7 +103,7 @@ func GetAllTemplates(c *gin.Context) (templateComposer paginate.TemplateComposer
 	page := c.Param("page")
 	pagesize := c.Param("pageSize")
 	var applications []model.Template
-	SQL:=config.DB.Model(&model.Template{})
+	SQL:=config.DB.Model(&model.Template{}).Preload("Modules")
 	templateComposer,err = paginate.TemplatePaginator(SQL,page,pagesize, applications)
 	return
 }
@@ -122,6 +122,8 @@ func CreateTemplate(c *gin.Context)(Template model.Template,err error){
 	var modules []model.Module
 	config.DB.Model(&model.Module{}).Where("id in (?)",moduleId).Find(&modules)
 	template.Modules = modules
+	loginUser,_:=user.GetLoginUser(c)
+	template.Owner = loginUser.User.Account
 
 	if err = config.DB.Model(&template).Create(&template).Error;err!=nil{
 		return model.Template{}, err

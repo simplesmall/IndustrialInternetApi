@@ -20,45 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58856b7b-a367-43c8-9dc8-1a66a39bcd22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/common/middleware/corsMid.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/common/utils/converter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/config/mysql.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/auth/authCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/database/operation.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/v1/insertCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/v1/libraryCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/v1/mirrorCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/v1/permissionCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/v1/reportCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/v1/roleCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/v1/templateCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/controller/api/v1/userCtl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/go.sum" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/authMod.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/compose/userCom.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/insertMod.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/libraryMod.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/mirrorMod.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/paginate/paginator.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/reportMod.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/response/result.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/templateMod.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/userMod.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/routers/routers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/independent/insertService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/independent/libraryService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/independent/mirrorService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/independent/reportService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/independent/templateService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/jwt/authService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/jwt/jwtService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/user/PermissionService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/user/RoleService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/service/user/UserService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,18 +46,29 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable..is.expanded" value="false" />
+    <property name="configurable.GoLibrariesConfigurable.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="go.sdk" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build IndustrialInternetApi ">
+    <configuration name="go build IndustrialInternetApi " type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+      <module name="IndustrialInternetApi" />
+      <working_directory value="$PROJECT_DIR$/controller" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/controller/main.go" />
+      <package value="IndustrialInternetApi" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build IndustrialInternetApi" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="IndustrialInternetApi" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
+      <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/main.go" />
       <package value="IndustrialInternetApi" />
       <directory value="$PROJECT_DIR$" />
@@ -103,6 +76,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build IndustrialInternetApi " />
         <item itemvalue="Go Build.go build IndustrialInternetApi" />
       </list>
     </recent_temporary>

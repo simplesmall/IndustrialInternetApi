@@ -21,7 +21,7 @@ type Module struct {
 type Template struct {
 	gorm.Model
 	Name string `json:"name"`
-	Status string `json:"status"`
+	Status string `gorm:"default:'1'" json:"status"`
 	Owner string `json:"owner"`
 	CreateTime string `json:"create_time"`
 	Modules []Module `gorm:"many2many:template_module" json:"modules"`

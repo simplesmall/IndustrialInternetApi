@@ -99,14 +99,14 @@ func GetMyDeviceById(ID uint) (myDevice model.MyDevice, err error) {
 	return
 }
 func CreateMyDevice(c *gin.Context) (myDevice model.MyDevice, err error) {
-	var mydevice model.MyDevice
 	var mydeviceIdList model.MyDeviceIdList
 	_ = c.BindJSON(&mydeviceIdList)
 	myinsertId := mydeviceIdList.Ids
 	var myinserts []model.MyInsert
-	config.DB.Model(&model.MyDevice{}).Where("id in (?)", myinsertId).Find(&myinserts)
+	config.DB.Model(&model.MyInsert{}).Where("id in (?)", myinsertId).Find(&myinserts)
+	var mydevice = mydeviceIdList.MyDevice
 	mydevice.MyInserts = myinserts
-	if err = config.DB.Model(&mydevice).Create(&mydevice).Error; err != nil {
+	if err = config.DB.Model(&model.MyDevice{}).Create(&mydevice).Error; err != nil {
 		return model.MyDevice{}, err
 	}
 	return mydevice, err
