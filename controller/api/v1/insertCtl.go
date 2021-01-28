@@ -8,12 +8,12 @@ import (
 )
 
 func GetAllApplicationInsertsHandler(c *gin.Context)  {
-	parkLibs, err := independent.GetAllApplicationInserts(c)
+	applicationInserts, err := independent.GetAllApplicationInserts(c)
 	if err != nil {
 		c.JSON(500,Response.ResponseBody{}.FailRes(err))
 		return
 	}
-	c.JSON(200,Response.ResponseBody{}.OKResult(parkLibs))
+	c.JSON(200,Response.ResponseBody{}.OKResult(applicationInserts))
 }
 func GetApplicationInsertByIdHandler(c *gin.Context)  {
 	id := c.Param("id")

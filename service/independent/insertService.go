@@ -12,13 +12,9 @@ func GetAllApplicationInserts(c *gin.Context) (applicationInsertComposer paginat
 	pagesize := c.Param("pageSize")
 
 	var inserts []model.ApplicationInsert
-	SQL:=config.DB.Preload("Permission").Model(&model.Role{})
+	SQL:=config.DB.Model(&model.ApplicationInsert{})
 	applicationInsertComposer,err = paginate.ApplicationInsertPaginator(SQL,page,pagesize, inserts)
-
-	if err = config.DB.Find(&applicationInsertComposer).Error;err !=nil{
-		return applicationInsertComposer, err
-	}
-	return
+	return applicationInsertComposer, err
 }
 func GetApplicationInsertById(ID uint) (applicationInsert model.ApplicationInsert,err error) {
 	if err =config.DB.Where("id = ?",ID).First(&applicationInsert).Error;err != nil{
@@ -28,7 +24,7 @@ func GetApplicationInsertById(ID uint) (applicationInsert model.ApplicationInser
 }
 func CreateApplicationInsert(c *gin.Context)(applicationInsert model.ApplicationInsert,err error){
 	_ = c.BindJSON(&applicationInsert)
-	if err = config.DB.Model(&applicationInsert).Create(&applicationInsert).Error;err!=nil{
+	if err = config.DB.Model(&model.ApplicationInsert{}).Create(&applicationInsert).Error;err!=nil{
 		return model.ApplicationInsert{}, err
 	}
 	return

@@ -7,7 +7,6 @@ import (
 	"IndustrialInternetApi/service/jwt"
 	"errors"
 	"github.com/gin-gonic/gin"
-	"strconv"
 )
 
 func GetAllRoles(c *gin.Context) (composer paginate.RoleComposer, err error) {
@@ -119,7 +118,7 @@ func GetLoginUser(c *gin.Context) (UserAndPermission, bool) {
 		var permissions []model.Permission
 		config.DB.Find(&permissions)
 		for _, value := range permissions {
-			resultData.Permissions = append(resultData.Permissions, strconv.Itoa(int(value.ID))) // 追加1个元素
+			resultData.Permissions = append(resultData.Permissions, value.Name) // 追加1个元素
 		}
 	} else {
 		var roles []model.Role
@@ -129,7 +128,7 @@ func GetLoginUser(c *gin.Context) (UserAndPermission, bool) {
 			var permissions []model.Permission
 			config.DB.Model(&item).Association("Permission").Find(&permissions)
 			for _, value := range permissions {
-				resultData.Permissions = append(resultData.Permissions, strconv.Itoa(int(value.ID))) // 追加1个元素
+				resultData.Permissions = append(resultData.Permissions, value.Name) // 追加1个元素strconv.Itoa(int(value.ID))
 			}
 		}
 		resultData.Permissions = removeDuplicateElement(resultData.Permissions)
