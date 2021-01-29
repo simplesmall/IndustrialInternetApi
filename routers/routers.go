@@ -181,6 +181,16 @@ func InitServer() {
 			v1.PUT("/joint/:id",version1.UpdateJointHandler)
 			v1.DELETE("/joint/:id",version1.DeleteJointHandler)
 		}
+
+		// excel操作的lib库
+		{
+			v1.GET("/libs/:type",version1.GetAllLibsHandler)       //分库下所有数据
+			v1.GET("/lib/:id",version1.GetLibByIdHandler)		  //单条数据
+			v1.POST("/uploadLib/:type",version1.UploadLibHandler)  //分库上传接口
+			v1.POST("/lib",version1.CreateLibHandler)			  //暂时无用,创建
+			v1.PUT("/lib/:id",version1.UpdateLibHandler)			  //更新数据接口
+			v1.DELETE("/lib/:id",version1.DeleteLibHandler)		  //删除单条记录
+		}
 	}
 	_ = r.Run(":8090")
 }

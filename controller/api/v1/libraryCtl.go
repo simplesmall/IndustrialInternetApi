@@ -124,3 +124,55 @@ func DeleteParkHandler(c *gin.Context)  {
 	}
 	c.JSON(200,Response.ResponseBody{}.OKResult(affe))
 }
+
+func GetAllLibsHandler(c *gin.Context)  {
+	mirrors, err := independent.GetAllLibs(c)
+	if err != nil {
+		c.JSON(500,Response.ResponseBody{}.FailRes(err))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(mirrors))
+}
+func GetLibByIdHandler(c *gin.Context)  {
+	id := c.Param("id")
+	libById,err:=independent.GetLibById(utils.StrToUInt(id))
+	if err != nil {
+		c.JSON(500,Response.ResponseBody{}.FailRes(err))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(libById))
+}
+func CreateLibHandler(c *gin.Context)  {
+	create,err:=independent.CreateLib(c)
+	if err != nil {
+		c.JSON(500,Response.ResponseBody{}.FailRes(err))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(create))
+}
+func UpdateLibHandler(c *gin.Context)  {
+	id := c.Param("id")
+	update,err:=independent.UpdateLib(c,utils.StrToUInt(id))
+	if err != nil {
+		c.JSON(500,Response.ResponseBody{}.FailRes(err))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(update))
+}
+func DeleteLibHandler(c *gin.Context)  {
+	id := c.Param("id")
+	affe:=independent.DeleteLib(utils.StrToUInt(id))
+	if affe == 0 {
+		c.JSON(500,Response.ResponseBody{}.FailRes("删除失败"))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(affe))
+}
+func UploadLibHandler(c *gin.Context)  {
+	rows,msg,err:=independent.UploadLib(c)
+	if err != nil {
+		c.JSON(500,Response.ResponseBody{}.FailRes("上传失败:"+msg))
+		return
+	}
+	c.JSON(200,Response.ResponseBody{}.OKResult(rows))
+}

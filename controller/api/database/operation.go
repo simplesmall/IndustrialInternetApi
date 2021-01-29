@@ -21,6 +21,8 @@ func AutoMigrate()(err error){
 	&model.Model{},&model.Module{},&model.Template{},
 	// 应用接入
 	&model.Joint{},
+	// excel操作的库(按分类区分企业库+园区库+项目库)
+	&model.Lib{},
 	)
 	if !config.DB.HasTable(&model.Role{}){
 		// 删除已有数据库保证操作干净
