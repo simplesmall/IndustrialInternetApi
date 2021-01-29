@@ -439,6 +439,8 @@ type JointComposer struct {
 	Data []model.Joint `json:"data"`
 }
 
+var joint = JointComposer{Pagination{false, 0, 0, 0}, nil}
+
 func JointPaginator(sql *gorm.DB,page,size string, applications []model.Joint) (data JointComposer,err error) {
 	intPage := utils.StrToInt(page)
 	intSize := utils.StrToInt(size)
@@ -461,5 +463,6 @@ func JointPaginator(sql *gorm.DB,page,size string, applications []model.Joint) (
 	data.Size = intSize
 	data.Page = intPage
 	data.Total = affected
-	return data,err
+	var data11 = JointComposer{Pagination{true, intSize, intPage, composeSQL.RowsAffected}, applications}
+	return data11,err
 }
